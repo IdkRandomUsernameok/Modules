@@ -262,7 +262,7 @@ Spawner.runEntity = function(entityTable)
                         
                         task.spawn(entityTable.Debug.OnDeath)
                         
-                        v21.CreateBodyMover({ "BodyVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart, Vector3.new(100000, 0, 100000), entityModel.NewRush.CFrame.lookVector * 150, 0.2 });
+                        v21.CreateBodyMover({ "BodyVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart, Vector3.new(100000, 0, 100000), entityModel.RushNew.CFrame.lookVector * 150, 0.2 });
                     
                         game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Functions"):InvokeServer({getrenv()._G.Pass,"Reset"})
                     
