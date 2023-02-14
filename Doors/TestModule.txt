@@ -102,7 +102,7 @@ Spawner.createEntity = function(config)
 
     -- Model
 
-    local entityModel = LoadCustomInstance(config.Model)
+    entityModel = LoadCustomInstance(config.Model)
 
     if typeof(entityModel) == "Instance" and entityModel.ClassName == "Model" then
         entityModel.PrimaryPart = entityModel.PrimaryPart or entityModel:FindFirstChildWhichIsA("BasePart")
@@ -262,7 +262,7 @@ Spawner.runEntity = function(entityTable)
                         
                         task.spawn(entityTable.Debug.OnDeath)
                         
-                        v21.CreateBodyMover({ "BodyVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart, Vector3.new(100000, 0, 100000), entityTable.Model.RushNew.CFrame.lookVector * 150, 0.2 });
+                        v21.CreateBodyMover({ "BodyVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart, Vector3.new(100000, 0, 100000), entityModel.NewRush.CFrame.lookVector * 150, 0.2 });
                     
                         game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Functions"):InvokeServer({getrenv()._G.Pass,"Reset"})
                     
