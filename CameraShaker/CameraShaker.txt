@@ -73,7 +73,7 @@ local ANG = CFrame.Angles
 local RAD = math.rad
 local v3Zero = V3()
 
-local CameraShakeInstance = require(loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/IdkRandomUsernameok/Modules/main/CameraShaker/CameraShakeInstance.txt"))())
+local CameraShakeInstance = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/IdkRandomUsernameok/Modules/main/CameraShaker/CameraShakeInstance.txt"))()
 local CameraShakeState = CameraShakeInstance.CameraShakeState
 
 local defaultPosInfluence = V3(0.15, 0.15, 0.15)
@@ -81,7 +81,7 @@ local defaultRotInfluence = V3(1, 1, 1)
 
 
 CameraShaker.CameraShakeInstance = CameraShakeInstance
-CameraShaker.Presets = require(loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/IdkRandomUsernameok/Modules/main/CameraShaker/CameraShakePresets.txt"))())
+CameraShaker.Presets = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/IdkRandomUsernameok/Modules/main/CameraShaker/CameraShakePresets.txt"))()
 
 
 function CameraShaker.new(renderPriority, callback)
