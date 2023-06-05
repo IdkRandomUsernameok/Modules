@@ -16,7 +16,7 @@
 
 
 
-local CameraShakeInstance = require(script.Parent.CameraShakeInstance)
+local CameraShakeInstance = require(loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/IdkRandomUsernameok/Modules/main/CameraShaker/CameraShakeInstance.txt"))())
 
 local CameraShakePresets = {
 	
