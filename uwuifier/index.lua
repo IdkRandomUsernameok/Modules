@@ -1,3 +1,5 @@
+local uf =require(loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/IdkRandomUsernameok/Modules/main/uwuifier/utils.lua"))())
+
 local DEFAULTS = {
     SPACES = {
         faces = 0.05,
@@ -171,3 +173,5 @@ function Uwuifier:uwuifySentence(sentence)
     uwuifiedString = self:uwuifySpaces(uwuifiedString)
     return uwuifiedString
 end
+
+return Uwuifier
