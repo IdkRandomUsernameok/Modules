@@ -1,4 +1,4 @@
-local utils = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/IdkRandomUsernameok/Modules/main/uwuifier/utils.lua"))())
+local utils = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/IdkRandomUsernameok/Modules/main/uwuifier/utils.lua"))()
 
 local DEFAULTS = {
     SPACES = {
