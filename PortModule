@@ -1,0 +1,370 @@
+
+-- The person who wanted me to make this had some stupid model import thing that is so big and I don't wanna bother fixing it up that much so lolll
+
+local Module = {}
+
+function Module.PortModel(s, c)
+    local plr = s
+    local chr = s.Character or s.CharacterAdded:Wait()
+    local hum = chr.Humanoid
+    if hum.RigType ~= Enum.HumanoidRigType.R6 then
+        game:GetService("GuiService"):SendNotification({
+            Title = "Error Loading!",
+            Text = "SWITCH TO R6 YOU BITCH",
+            Duration = 5
+        })   
+    else
+        local bps = {"Left Arm", "Right Arm", "Left Leg", "Right Leg", "Head"}
+
+        -- auto color change 
+
+        for i,v in pairs(chr:GetChildren()) do
+            if v:IsA("Part") and table.find(bps, v.Name) then
+                v.Color = Color3.fromRGB(204, 142, 105) or c
+            end
+        end
+        
+        -- model import
+
+        local RWarmPart = Instance.new("Part")
+		RWarmPart.Parent = chr["Right Arm"]
+		RWarmPart.CanCollide = false
+		RWarmPart.Name = "Right Arm Warmer"
+		RWarmPart.Color = Color3.fromRGB(0,0,0)
+		local RWarm = Instance.new("FileMesh")
+		RWarm.Parent = RWarmPart
+		RWarm.MeshId = "rbxassetid://6022493379"
+		RWarm.Scale = Vector3.new(1.22,1.6,1.22)
+		local RWarmWeld = Instance.new("Weld")
+		RWarmWeld.Parent = RWarmPart
+		RWarmWeld.Part0 = RWarmPart
+		RWarmWeld.Part1 = chr["Right Arm"]
+		RWarmWeld.C0 = CFrame.new(0.05,0,0) * CFrame.Angles(0,math.rad(0),math.rad(5))
+
+		local LWarmPart = Instance.new("Part")
+		LWarmPart.Parent = chr["Left Arm"]
+		LWarmPart.CanCollide = false
+		LWarmPart.Name = "Left Arm Warmer"
+		LWarmPart.Color = Color3.fromRGB(0,0,0)
+		local LWarm = Instance.new("FileMesh")
+		LWarm.Parent = LWarmPart
+		LWarm.MeshId = "rbxassetid://6022493379"
+		LWarm.Scale = Vector3.new(1.22,1.6,1.22)
+		local LWarmWeld = Instance.new("Weld")
+		LWarmWeld.Parent = LWarmPart
+		LWarmWeld.Part0 = LWarmPart
+		LWarmWeld.Part1 = chr["Left Arm"]
+		LWarmWeld.C0 = CFrame.new(0.05,0,0) * CFrame.Angles(math.rad(0),math.rad(180),math.rad(-5))
+
+		local LSockPart = Instance.new("Part")
+		LSockPart.Parent = chr["Left Leg"]
+		LSockPart.CanCollide = false
+		LSockPart.Name = "Left Sock"
+		LSockPart.Color = Color3.fromRGB(0,0,0)
+		local LSock = Instance.new("FileMesh")
+		LSock.Parent = LSockPart
+		LSock.MeshId = "rbxassetid://4450773061"
+		LSock.Offset = Vector3.new(0, 0, 0.1)
+		LSock.Scale = Vector3.new(1.3, 0.7, 1.2)
+		local LSockWeld = Instance.new("Weld")
+		LSockWeld.Parent = LSockPart
+		LSockWeld.Part0 = LSockPart
+		LSockWeld.Part1 = chr["Left Leg"]
+		LSockWeld.C0 = CFrame.new(0,0.35,0) * CFrame.Angles(0,math.rad(-90),0)
+
+		local RSockPart = Instance.new("Part")
+		RSockPart.Parent = chr["Right Leg"]
+		RSockPart.CanCollide = false
+		RSockPart.Name = "Right Sock"
+		RSockPart.Color = Color3.fromRGB(0,0,0)
+		local RSock = Instance.new("FileMesh")
+		RSock.Parent = RSockPart
+		RSock.MeshId = "rbxassetid://4450771439"
+		RSock.Offset = Vector3.new(0.1, 0, 0)
+		RSock.Scale = Vector3.new(1.3, 0.7, 1.2)
+		local RSockWeld = Instance.new("Weld")
+		RSockWeld.Parent = RSockPart
+		RSockWeld.Part0 = RSockPart
+		RSockWeld.Part1 = chr["Right Leg"]
+		RSockWeld.C0 = CFrame.new(0,0.35,0) * CFrame.Angles(0,math.rad(-90),0)
+
+		local RightBoobPart = Instance.new("Part")
+		RightBoobPart.Parent = chr["Torso"]
+		RightBoobPart.CanCollide = false
+		RightBoobPart.Massless = true
+		RightBoobPart.Name = "Right Boob"
+		RightBoobPart.Color = Color3.fromRGB(204, 142, 105)
+		local RightBoob = Instance.new("FileMesh")
+		RightBoob.Parent = RightBoobPart
+		RightBoob.MeshId = "rbxassetid://5270413797"
+		RightBoob.Scale = Vector3.new(0.5,0.5,0.5)
+		local RightBoobWeld = Instance.new("Weld")
+		RightBoobWeld.Parent = RightBoobPart
+		RightBoobWeld.Part0 = RightBoobPart
+		RightBoobWeld.Part1 = chr["Torso"]
+		RightBoobWeld.C0 = CFrame.new(-0.477,-0.3,-0.323) * CFrame.Angles(math.rad(0.002),math.rad(-90.001),math.rad(-0.003))
+
+		local RightTitPart = Instance.new("Part")
+		RightTitPart.Parent = RightBoobPart
+		RightTitPart.CanCollide = false
+		RightTitPart.Name = "Areola"
+		RightTitPart.Transparency = 1
+		local RightTit = Instance.new("FileMesh")
+		RightTit.Parent = RightTitPart
+		RightTit.MeshId = "rbxassetid://5270413797"
+		RightTit.Scale = Vector3.new(0.5,0.5,0.5)
+		local RightTitDecal = Instance.new("Decal")
+		RightTitDecal.Parent = RightTitPart
+		RightTitDecal.Texture = "rbxassetid://9065282081"
+		RightTitDecal.Color3 = Color3.fromRGB(116, 68, 68)
+		local RightTitWeld = Instance.new("Weld")
+		RightTitWeld.Parent = RightTitPart
+		RightTitWeld.Part0 = RightTitPart
+		RightTitWeld.Part1 = chr["Torso"]
+		RightTitWeld.C0 = CFrame.new(-0.477,-0.3,-0.323) * CFrame.Angles(math.rad(0.002),math.rad(-90.001),math.rad(-0.003))
+
+
+		local LeftBoobPart = Instance.new("Part")
+		LeftBoobPart.Parent = chr["Torso"]
+		LeftBoobPart.CanCollide = false
+		LeftBoobPart.Name = "Left Boob"
+		LeftBoobPart.Color = Color3.fromRGB(204, 142, 105)
+		LeftBoobPart.Massless = true
+		local LeftBoob = Instance.new("FileMesh")
+		LeftBoob.Parent = LeftBoobPart
+		LeftBoob.MeshId = "rbxassetid://5270415437"
+		LeftBoob.Scale = Vector3.new(0.5,0.5,0.5)
+		local LeftBoobWeld = Instance.new("Weld")
+		LeftBoobWeld.Parent = LeftBoobPart
+		LeftBoobWeld.Part0 = LeftBoobPart
+		LeftBoobWeld.Part1 = chr["Torso"]
+		LeftBoobWeld.C0 = CFrame.new(-0.477,-0.3,0.377) * CFrame.Angles(math.rad(0.002),math.rad(-90.001),math.rad(-0.003))
+
+		local LeftTitPart = Instance.new("Part")
+		LeftTitPart.Parent = LeftBoobPart
+		LeftTitPart.CanCollide = false
+		LeftTitPart.Name = "Areola"
+		LeftTitPart.Transparency = 1
+		local LeftTit = Instance.new("FileMesh")
+		LeftTit.Parent = LeftTitPart
+		LeftTit.MeshId = "rbxassetid://5270415437"
+		LeftTit.Scale = Vector3.new(0.5,0.5,0.5)
+		local LeftTitDecal = Instance.new("Decal")
+		LeftTitDecal.Parent = LeftTitPart
+		LeftTitDecal.Texture = "rbxassetid://9065282081"
+		LeftTitDecal.Color3 = Color3.fromRGB(116,68,68)
+		local LeftTitWeld = Instance.new("Weld")
+		LeftTitWeld.Parent = LeftTitPart
+		LeftTitWeld.Part0 = LeftTitPart
+		LeftTitWeld.Part1 = chr["Torso"]
+		LeftTitWeld.C0 = CFrame.new(-0.477,-0.3,0.377) * CFrame.Angles(math.rad(0.002),math.rad(-90.001),math.rad(-0.003))
+
+		local PantiesPart = Instance.new("Part")
+		PantiesPart.Parent = chr["Torso"]
+		PantiesPart.CanCollide = false
+		PantiesPart.Name = "Panties"
+		PantiesPart.Color = Color3.fromRGB(0, 0, 0)
+		local Panties = Instance.new("FileMesh")
+		Panties.Parent = PantiesPart
+		Panties.MeshId = "rbxassetid://6668707772"
+		Panties.Offset = Vector3.new(0, -0.1, 0)
+		Panties.Scale = Vector3.new(0.9, 1, 0.76)
+		local PantiesWeld = Instance.new("Weld")
+		PantiesWeld.Parent = PantiesPart
+		PantiesWeld.Part0 = PantiesPart
+		PantiesWeld.Part1 = chr["Torso"]
+		PantiesWeld.C0 = CFrame.new(0,0.72,0) * CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
+
+        RightTitDecal.Parent = RightBoobPart
+		LeftTitDecal.Parent = LeftBoobPart
+
+		local LArmMesh = Instance.new("FileMesh")
+		LArmMesh.Parent = chr["Left Arm"]
+		LArmMesh.MeshId = "rbxassetid://4450772274"
+
+		local RArmMesh = Instance.new("FileMesh")
+		RArmMesh.Parent = chr["Right Arm"]
+		RArmMesh.MeshId = "rbxassetid://4450769851"
+
+		local LLegMesh = Instance.new("FileMesh")
+		LLegMesh.Parent = chr["Left Leg"]
+		LLegMesh.MeshId = "rbxassetid://4450773061"
+
+		local RLegMesh = Instance.new("FileMesh")
+		RLegMesh.Parent = chr["Right Leg"]
+		RLegMesh.MeshId = "rbxassetid://4450771439"
+
+		chr["Torso"].Transparency = 1
+
+		local TorsoPart = Instance.new("Part")
+		TorsoPart.Parent = chr["Torso"]
+		TorsoPart.CanCollide = false
+		TorsoPart.Name = "Torso Mesh"
+		TorsoPart.Color = Color3.fromRGB(204, 142, 105)
+
+		local TorsoMesh = Instance.new("FileMesh")
+		TorsoMesh.Parent = TorsoPart
+		TorsoMesh.MeshId = "rbxassetid://9140977559"
+		TorsoMesh.Scale = Vector3.new(0.01,0.01,0.01)
+		local TorsoWeld = Instance.new("Weld")
+		TorsoWeld.Parent = TorsoPart
+		TorsoWeld.Part0 = TorsoPart
+		TorsoWeld.Part1 = chr["Torso"]
+		TorsoWeld.C0 = CFrame.new(0,0,0) * CFrame.Angles(0,math.rad(180),0)
+
+		chr["Head"].face.Texture = "rbxassetid://2801594973"
+		chr["Head"].face.Name = "Eyes"
+
+
+		local TorsoPart = chr.Torso
+
+		local part = Instance.new("Part")
+		part.Parent = TorsoPart
+		part.Size = Vector3.new(1, 1, 1)
+		part.Name = "right"
+		part.Orientation = Vector3.new(-90, -0, 0)
+
+		local weld = Instance.new("Weld", TorsoPart)
+		weld.Part0 = TorsoPart
+		weld.Part1 = part
+
+		local mesh = Instance.new("SpecialMesh", part)
+		mesh.MeshType = "Sphere"
+		mesh.MeshId = "rbxassetid://6256904072"
+		part.CFrame = TorsoPart.CFrame * CFrame.new(0, -2.5, 0)
+		part.BrickColor = BrickColor.new("Nougat")
+		mesh.Offset = Vector3.new(0.45, -1, 0.4)
+		mesh.Scale = Vector3.new(0.5, 0.5, 0.5)
+
+		local part2 = Instance.new("Part")
+		part2.Parent = TorsoPart
+		part2.Size = Vector3.new(1, 1, 1)
+		part2.Name = "left"
+		part2.Orientation = Vector3.new(-90, -0, 0)
+
+		local weld2 = Instance.new("Weld", TorsoPart)
+		weld2.Part0 = TorsoPart
+		weld2.Part1 = part2
+
+		local mesh2 = Instance.new("SpecialMesh", part)
+		mesh2.MeshType = "Sphere"
+		mesh2.MeshId = "rbxassetid://6256904072"
+		mesh2.Parent = part2
+		part2.BrickColor = BrickColor.new("Nougat")
+		mesh2.Offset = Vector3.new(-0.45, -1, 0.4)
+		mesh2.Scale = Vector3.new(0.5, 0.5, 0.5)
+
+		local part3 = Instance.new("Part")
+		part3.Parent = LeftBoobPart
+		part3.Size = Vector3.new(1, 1, 1)
+		part3.Name = "left_tip"
+		part3.CanCollide = false
+
+		local weld3 = Instance.new("Weld", LeftTitPart)
+		weld3.Part0 = LeftBoobPart
+		weld3.Part1 = part3
+		weld3.C0 = CFrame.new(-0.67, -0.3, -0.17) * CFrame.Angles(0,0,0)
+
+		local mesh3 = Instance.new("SpecialMesh", part3)
+		mesh3.MeshType = "Sphere"
+		mesh3.MeshId = "rbxassetid://5270413936"
+		part3.Color = Color3.new(0.454902, 0.270588, 0.270588)
+		mesh3.Offset = Vector3.new(1.3, 0.05, -0.15)
+		mesh3.Scale = Vector3.new(0.5, 0.5, 0.5)
+
+		local part4 = Instance.new("Part")
+		part4.Parent = RightBoobPart
+		part4.Size = Vector3.new(1, 1, 1)
+		part4.Name = "right_tip"
+		part4.CanCollide = false
+
+		local weld4 = Instance.new("Weld", RightTitPart)
+		weld4.Part0 = RightBoobPart
+		weld4.Part1 = part4
+		weld4.C0 = CFrame.new(-0.15, -0.3, -0.7) * CFrame.Angles(0,math.rad(-30), 0)
+
+		local mesh4 = Instance.new("SpecialMesh", part4)
+		mesh4.MeshType = "Sphere"
+		mesh4.MeshId = "rbxassetid://5270413936"
+		part4.Color = Color3.new(0.454902, 0.270588, 0.270588)
+		mesh4.Offset = Vector3.new(1.2, 0.05, 0.5)
+		mesh4.Scale = Vector3.new(0.5, 0.5, 0.5)
+
+		------------------
+
+		local part5 = Instance.new("Part")
+		part5.Parent = TorsoPart
+		part5.Size = Vector3.new(1, 1, 1)
+		part5.Name = "wowie_zone"
+		part5.Orientation = Vector3.new(-90, -0, 0)
+
+		local offset_number = Vector3.new(0.45, -0.65, 0)
+
+		local mesh5 = Instance.new("SpecialMesh", part5)
+		mesh5.MeshType = "Sphere"
+		mesh5.MeshId = "rbxassetid://6257060939"
+		part5.Color = Color3.new(0.8, 0.556863, 0.411765)
+		mesh5.Offset = offset_number
+		mesh5.Scale = Vector3.new(0.7, 0.7, 0.7)
+
+		local part6 = Instance.new("Part")
+		part6.Parent = TorsoPart
+		part6.Size = Vector3.new(1, 1, 1)
+		part6.Name = "wowie_zone2"
+		part6.Orientation = Vector3.new(0, 29.85, 0)
+
+		local mesh6 = Instance.new("SpecialMesh", part6)
+		mesh6.MeshType = "Sphere"
+		mesh6.MeshId = "rbxassetid://6257060939"
+		part6.Color = Color3.new(0.8, 0.556863, 0.411765)
+		mesh6.Offset = offset_number
+		mesh6.Scale = Vector3.new(0.7, 0.7, 0.7)
+
+		local decal = Instance.new("Decal", part6)
+		decal.Texture = "http://www.roblox.com/asset/?id=9065325204"
+		decal.Color3 = Color3.new(0.454902, 0.270588, 0.270588)
+		decal.Name = "color1"
+
+		local number = CFrame.new(0, 0 ,0) * CFrame.Angles(-.8, -0, 0)
+
+		local weld5 = Instance.new("Weld", part5)
+		weld5.Part0 = part5
+		weld5.Part1 = TorsoPart
+		weld5.C0 = CFrame.new(0, 0 ,0) * CFrame.Angles(0, 29.85, 0)
+		weld5.C1 = number
+
+		local weld6 = Instance.new("Weld", part6)
+		weld6.Part0 = part6
+		weld6.Part1 = TorsoPart
+		weld6.C0 = CFrame.new(0, 0 ,0) * CFrame.Angles(0, 29.85, 0)
+		weld6.C1 = number
+
+		------------------------------
+
+		local part7 = Instance.new("Part")
+		part7.Parent = TorsoPart
+		part7.CanCollide = false
+		part7.Size = Vector3.new(0.001, 1, 1)
+		part7.Name = "Cloud_Effect"
+		part7.Transparency = 1
+
+		local effect = Instance.new("ParticleEmitter", part7)
+		effect.Size = NumberSequence.new(2)
+		effect.ZOffset = 1
+		effect.Lifetime = NumberRange.new(.6)
+		effect.Rate = 50
+		effect.Speed = NumberRange.new(0.3)
+		effect.Enabled = false
+		effect.Texture = "http://www.roblox.com/asset/?id=290833005"
+		effect.LightInfluence = 1
+		effect.LightEmission = 0.1
+		effect.Drag = 5
+
+		local weld7 = Instance.new("Weld", part7)
+		weld7.Part0 = part7
+		weld7.Part1 = TorsoPart
+		weld7.C0 = CFrame.new(0, .8, .7) * CFrame.Angles(0, 0, 0)
+    end
+end
+
+return Module
